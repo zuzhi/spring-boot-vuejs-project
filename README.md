@@ -7,6 +7,8 @@
 详细:
 
 1. 项目结构
+  
+TODO
 
 ## Java 代码规约
 
@@ -16,6 +18,7 @@
 
 1. 类注释
 
+TODO
 
 ## 项目运行
 
@@ -31,7 +34,7 @@ Run our complete Spring Boot App:
 mvn --projects backend spring-boot:run
 ```
 
-Now go to http://localhost:8080/ and have a look at your first Vue.js Spring Boot App.
+Now go to http://localhost:3000/ and have a look at your first Vue.js Spring Boot App.
 
 
 
@@ -43,4 +46,4 @@ The webpack-dev-server, which will update and build every change through all the
 npm run dev
 ```
 
-That’s it! Now go to http://localhost:8081/.
+That’s it! Now go to http://localhost:3001/.
