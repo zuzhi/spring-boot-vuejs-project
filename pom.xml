@@ -11,14 +11,6 @@
     <name>spring-boot-vuejs-project</name>
     <description>Demo project for Spring Boot</description>
 
-    <repositories>
-        <repository>
-            <id>nexus-aliyun</id>
-            <name>Nexus aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -28,49 +20,48 @@
 
     <properties>
         <main.basedir>${project.basedir}</main.basedir>
-        <!-- Analysis Tools for CI -->
-        <build-plugin.jacoco.version>0.8.0</build-plugin.jacoco.version>
-        <build-plugin.coveralls.version>4.3.0</build-plugin.coveralls.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!-- http://projects.spring.io/spring-cloud/ -->
+        <spring-cloud-dependencies.version>Edgware.SR2</spring-cloud-dependencies.version>
     </properties>
 
     <modules>
         <module>frontend</module>
         <module>backend</module>
+        <module>config</module>
+        <module>discovery</module>
+        <module>gateway</module>
     </modules>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${build-plugin.jacoco.version}</version>
-                <executions>
-                    <!-- Prepares the property pointing to the JaCoCo
-                    runtime agent which is passed as VM argument when Maven the Surefire plugin
-                    is executed. -->
-                    <execution>
-                        <id>pre-unit-test</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <!-- Ensures that the code coverage report for
-                    unit tests is created after unit tests have been run. -->
-                    <execution>
-                        <id>post-unit-test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
-                <version>${build-plugin.coveralls.version}</version>
-            </plugin>
-        </plugins>
-    </build>
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
 </project>
